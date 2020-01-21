@@ -21,10 +21,10 @@ steps:
     projects: 'MyProject/MyProject.csproj'
     publishWebProjects: false
     zipAfterPublish: true
-    arguments: '--configuration release'
+    arguments: '--configuration release  --output $(build.artifactstagingdirectory) --runtime win-x64'
 
 - task: PublishPipelineArtifact@0
   displayName: Store artefact
   inputs:
     artifactName: 'MyProject'
-    targetPath: 'MyProject/bin/release/netcoreapp2.2/publish/'
+    targetPath: '$(build.artifactstagingdirectory)'
